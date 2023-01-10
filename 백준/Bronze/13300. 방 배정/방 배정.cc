@@ -20,10 +20,9 @@ int main(){
     }
 
     for(int i=1;i<7;i++){
-        if(male[i]%k==0) room+=male[i]/k;
-        if(male[i]%k!=0) room+=male[i]/k+1;
-        if(female[i]%k==0) room+=female[i]/k;
-        if(female[i]%k!=0) room+=female[i]/k+1;
+        room+=male[i]/k+female[i]/k;
+        if(male[i]%k!=0) room++;
+        if(female[i]%k!=0) room++;
     }
     cout<<room;
 }
