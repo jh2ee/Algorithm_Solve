@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 #include<algorithm>
 using namespace std;
 
@@ -16,10 +15,8 @@ int main(){
     cin>>x;
 
     for(int i=0;i<n;i++){
-        if(x-a[i]>0&&x-a[i]<2000001){
-            if(arr[x-a[i]]==1) count++;
-            arr[a[i]]=1;
-        }
+        if(arr[x-a[i]]==1) count++;
+        arr[a[i]]=1;
     }
     cout<<count<<"\n";
 }
