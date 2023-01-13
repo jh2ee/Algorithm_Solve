@@ -1,23 +1,21 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define X first
-#define Y second
 
-int N;
-stack<pair<int,int>> tower;
+stack <pair <int, int> > tower;
+int n;
 
-int main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
+int main(){
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    cin>>n;
 
-  cin >> N;  
-  tower.push({100000001, 0});
-  for (int i = 1; i <= N; i++) {
-    int height;
-    cin >> height;
-    while (tower.top().X < height)
-      tower.pop();    
-    cout << tower.top().Y << " ";
-    tower.push({height, i});      
-  }
+    tower.push({100000001,0}); // 스택 empty로 인한 오류 막음
+
+    for(int i=1;i<=n;i++){
+        int h; cin>>h;
+        while(tower.top().first<h){
+            tower.pop();
+        }
+        cout<<tower.top().second<<" ";
+        tower.push({h,i});
+    }
 }
