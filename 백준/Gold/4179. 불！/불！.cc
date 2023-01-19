@@ -34,7 +34,6 @@ int main() {
                 q.push({i,j}); //불의 초기 위치 푸쉬
                 fire[i][j]=0;
             }
-            if(board[i][j]=='.') board[i][j]=0;
         }
     }
 
