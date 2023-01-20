@@ -20,8 +20,8 @@ int main() {
         while(k--){ //board 초기화, 배추 위치 입력
             int x,y;
             cin>>x>>y;
-            q1.push({x,y});
-            board[x][y]=1;
+            q1.push({y,x});
+            board[y][x]=1;
         }
         
         while(!q1.empty()){
@@ -36,7 +36,7 @@ int main() {
                 for(int i=0;i<4;i++){
                     int nx=cur.first+dx[i];
                     int ny=cur.second+dy[i];
-                    if(nx<0||nx>=m||ny<0||ny>=n) continue; //유효하지 않은 인덱스 접근
+                    if(nx<0||nx>=n||ny<0||ny>=m) continue; //유효하지 않은 인덱스 접근
                     if(v[nx][ny]||board[nx][ny]==0) continue; //이미 방문한 케이스
                     v[nx][ny]=true; q2.push({nx,ny});
                 }
