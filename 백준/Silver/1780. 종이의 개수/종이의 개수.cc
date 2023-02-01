@@ -1,46 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int board[2200][2200];
-int cnt[3];
+int inp[2200][2200];
+int board[3];
 
-bool c(int x,int y,int n){
-    for(int i=x;i<x+n;i++){
-        for(int j=y;j<y+n;j++){
-            if(board[x][y]!=board[i][j]) return false;
+bool check(int n, int a, int b){
+    for (int i=a; i<a+n; i++){
+        for (int j=b; j<b+n; j++){
+            if (inp[a][b] != inp[i][j]) return false;
         }
     }
     return true;
 }
 
-void func(int x,int y,int z){
-    if(c(x,y,z)){
-        cnt[board[x][y]+1]++;
+void func(int n, int a, int b){
+    if (check(n, a, b)){
+        board[inp[a][b]+1] += 1;
         return;
     }
-    int n=z/3; //3배수로만 주어지므로
-    for(int i=0;i<3;i++){
-        for(int j=0;j<3;j++){
-            func(x+i*n,y+j*n,n); //각 종이면에 대한 함수 실행
+    for (int i=0; i<3; i++){
+        for (int j=0; j<3; j++){
+            func(n/3, a+(n/3)*i, b+(n/3)*j);
         }
     }
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-
-    int n; cin>>n;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            cin>>board[i][j];
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int n; cin >> n;
+    for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+            cin >> inp[i][j];
         }
     }
-    func(0,0,n); //함수 최초 실행
-    for(int i=0;i<3;i++){
-        cout<<cnt[i]<<"\n";
-    }
-
-
-    return 0;
+    func(n, 0, 0);
+    for (int i=0; i<3; i++) cout << board[i] << "\n";
 }
