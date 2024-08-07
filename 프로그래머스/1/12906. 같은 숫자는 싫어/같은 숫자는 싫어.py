@@ -1,7 +1,5 @@
-from collections import deque
-
 def solution(arr):
-    answer = deque()
+    answer = []
     
     for idx, a in enumerate(arr):
         if idx == 0:
@@ -15,4 +13,4 @@ def solution(arr):
             answer.append(a)
             last_number = a
     
-    return list(answer)
+    return answer
