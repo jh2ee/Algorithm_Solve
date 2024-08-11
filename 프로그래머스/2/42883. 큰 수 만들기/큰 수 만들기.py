@@ -1,19 +1,14 @@
-from collections import deque
-
 def solution(number, k):
-    dq = deque()
-    answer = ''
+    stack = []
     
     for idx, num in enumerate(number):
-        while dq and k>0 and dq[-1] < num:
-            dq.pop()
+        while stack and k and stack[-1] < num:
+            stack.pop()
             k -= 1
-        dq.append(num)
+        stack.append(num)
+    
     while k > 0:
-        dq.pop()
+        stack.pop()
         k -= 1
     
-    # deque에 있는 숫자를 모두 합쳐서 결과 반환
-    answer = ''.join(dq)
-    
-    return answer
+    return ''.join(stack)
